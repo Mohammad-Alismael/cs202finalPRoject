@@ -219,11 +219,19 @@
         <input type="text" id="publicationValue"/>
         <select id="publisher">
             <option selected>select publisher</option>
-            <option>jarir</option>
-            <option>jarir2</option>
-            <option>jarir3</option>
-            <option>jarir4</option>
+            <%
+                String[][] data2 = (String[][]) session.getAttribute("select_publisher");
+                if (data2 != null)
+                {
+                    for (String[] item2 : data2)
+                    {%>
+            <option><%= item2[0] %> </option>
+            <%}
+            }
+            %>
+
         </select>
+        <input type="text" name="filteredIsbn" placeholder="filter by ISBN">
     </div>
     <button onclick="getFilters()" id="filter">filter</button>
 </div>
@@ -271,16 +279,9 @@
         <tr>
             <th>ISBN</th>
             <th>title</th>
-            <th>author</th>
-            <th>topics</th>
-            <th>genre</th>
-            <th>description</th>
             <th>number of borrowing</th>
             <th>number of sells</th>
-            <th>publication date</th>
         </tr>
-
-
     </table>
 </div>
 
@@ -324,10 +325,11 @@
         var currentlyBorrowed = document.getElementById("currentlyBorrowed").checked;
         var publicationValue = document.getElementById("publicationValue");
         var publicationValue2 = publicationValue == "" ? "none" : publicationValue.value;
+        var filteredIsbn = document.getElementsByName("filteredIsbn")[0];
         var str_url = '/main_page_publisher/view_books_publisher?title='+title2+'&author_name='+
             author_name2+'&topics='+topics2+'&genre='+genre2+'&publisher='+selectedPublisher+
             '&myActiveHoldings='+myActiveHoldings+'&publicationYear='+publicationValue2+'&sortBy='+selectedSortBy+
-            '&currentlyOverdue='+currentlyOverdue+'&currentlyBorrowed='+currentlyBorrowed;
+            '&currentlyOverdue='+currentlyOverdue+'&currentlyBorrowed='+currentlyBorrowed+'&filteredIsbn='+filteredIsbn.value;
 
         window.location.href = str_url
         console.log(str_url);

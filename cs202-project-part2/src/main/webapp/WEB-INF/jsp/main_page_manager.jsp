@@ -70,7 +70,7 @@
 
     <div>
         <a href="/main_page_manager/view_books_manager">view books</a>
-        <a href="/main_page_user/place_hold_request">manage books</a>
+        <a href="/main_page_manager/manage_books">manage books</a>
         <a href="/main_page_manager/add_publisher">add publisher</a>
         <a href="/main_page_manager/history_manager">history(for all users)</a>
         <a href="/logout">log out</a>

@@ -178,9 +178,9 @@
             <select id="sortBy">
                 <option>author</option>
                 <option>title</option>
-                <option> genre </option>
-                <option> topic </option>
-                <option> publisher </option>
+                <option>genre</option>
+                <option>topic</option>
+                <option>publisher</option>
             </select>
         </div>
         <div class="innerFilterDiv">
@@ -213,7 +213,7 @@
                     {
                         for (String[] item2 : data2)
                         {%>
-                        <option>  <%= item2[0] %> </option>
+                        <option><%= item2[0] %></option>
                         <%}
                         }
                 %>
@@ -222,6 +222,7 @@
 <%--                <option>jarir3</option>--%>
 <%--                <option>jarir4</option>--%>
             </select>
+            <input type="text" name="filteredIsbn" placeholder="filter by ISBN">
         </div>
         <button onclick="getFilters()" id="filter">filter</button>
     </div>
@@ -251,7 +252,7 @@
             <tr>
                 <% for (int i = 0; i < 10; i++) {
                 %>
-                <td> <%= item[i] %></td>
+                <td><%= item[i] %></td>
                 <%
                     }
                 %>
@@ -337,11 +338,12 @@
             var currentlyOverdue = document.getElementById("currentlyOverdue").checked;
             var currentlyBorrowed = document.getElementById("currentlyBorrowed").checked;
             var publicationValue = document.getElementById("publicationValue");
+            var filteredIsbn = document.getElementsByName("filteredIsbn")[0];
             var publicationValue2 = publicationValue == "" ? "none" : publicationValue.value;
             var str_url = '/main_page_user/view_books?title='+title2+'&author_name='+
                 author_name2+'&topics='+topics2+'&genre='+genre2+'&publisher='+selectedPublisher+
                 '&myActiveHoldings='+myActiveHoldings+'&publicationYear='+publicationValue2+'&sortBy='+selectedSortBy+
-                '&currentlyOverdue='+currentlyOverdue+'&currentlyBorrowed='+currentlyBorrowed;
+                '&currentlyOverdue='+currentlyOverdue+'&currentlyBorrowed='+currentlyBorrowed+'&filteredIsbn='+filteredIsbn.value;
 
             window.location.href = str_url
             console.log(str_url);
@@ -366,9 +368,8 @@
         }
         var quantitySelect = document.getElementsByName("quantity")[0];
         function update(){
-            var str_url = '/main_page_user/view_books?isbn=' + isnb.value + '&which_table=' +'&quantity='+quantitySelect.value;
-                whichTable.item(whichTable.selectedIndex).innerText;
-
+            var str_url = '/main_page_user/view_books?isbn=' + isnb.value +'&which_table=' +
+                whichTable.item(whichTable.selectedIndex).innerText+'&quantity='+quantitySelect.value;
             window.location.href = str_url
         }
         var parentTable = document.getElementById("checkSelectedBook");

@@ -113,11 +113,12 @@ public class AppController
     }
 
     @RequestMapping(value = "/main_page_publisher/view_books_publisher", params = {"title","author_name","topics","genre",
-            "publisher","myActiveHoldings","publicationYear","sortBy","currentlyOverdue","currentlyBorrowed"})
+            "publisher","myActiveHoldings","publicationYear","sortBy","currentlyOverdue","currentlyBorrowed","filteredIsbn"})
     public String main_page_publisherPage_view_books_row(ModelMap model,@RequestParam("title") String title,@RequestParam("author_name") String author_name,
                                                     @RequestParam("topics") String topics,@RequestParam("genre") String genre,@RequestParam("publisher") String publisher,
                                                     @RequestParam("myActiveHoldings") String myActiveHoldings,@RequestParam("publicationYear") String publicationYear,
-                                                    @RequestParam("sortBy") String sortBy,@RequestParam("currentlyOverdue") String currentlyOverdue,@RequestParam("currentlyBorrowed") String currentlyBorrowed) {
+                                                    @RequestParam("sortBy") String sortBy,@RequestParam("currentlyOverdue") String currentlyOverdue,
+                                                         @RequestParam("currentlyBorrowed") String currentlyBorrowed,@RequestParam("filteredIsbn") String filteredIsbn) {
 
         System.out.println("----------------");
         // filter view book publisher
@@ -167,11 +168,12 @@ public class AppController
     }
 
     @RequestMapping(value = "/main_page_user/view_books", params = {"title","author_name","topics","genre",
-            "publisher","myActiveHoldings","publicationYear","sortBy","currentlyOverdue","currentlyBorrowed"})
+            "publisher","myActiveHoldings","publicationYear","sortBy","currentlyOverdue","currentlyBorrowed","filteredIsbn"})
     public String main_page_userPage_view_books_row(ModelMap model,@RequestParam("title") String title,@RequestParam("author_name") String author_name,
        @RequestParam("topics") String topics,@RequestParam("genre") String genre,@RequestParam("publisher") String publisher,
        @RequestParam("myActiveHoldings") String myActiveHoldings,@RequestParam("publicationYear") String publicationYear,
-       @RequestParam("sortBy") String sortBy,@RequestParam("currentlyOverdue") String currentlyOverdue,@RequestParam("currentlyBorrowed") String currentlyBorrowed) {
+       @RequestParam("sortBy") String sortBy,@RequestParam("currentlyOverdue") String currentlyOverdue,
+                                                    @RequestParam("currentlyBorrowed") String currentlyBorrowed,@RequestParam("filteredIsbn") String filteredIsbn) {
 
         System.out.println("----------------");
         // filter
@@ -242,6 +244,40 @@ public class AppController
         return "view_books_manager";
     }
 
+    @RequestMapping(value = "/main_page_manager/view_books_manager", params = {"title","author_name","topics","genre",
+            "publisher","myActiveHoldings","publicationYear","sortBy","currentlyOverdue","currentlyBorrowed","filteredIsbn"})
+    public String main_page_managerPage_view_books_row(ModelMap model,@RequestParam("title") String title,@RequestParam("author_name") String author_name,
+                                                    @RequestParam("topics") String topics,@RequestParam("genre") String genre,@RequestParam("publisher") String publisher,
+                                                    @RequestParam("myActiveHoldings") String myActiveHoldings,@RequestParam("publicationYear") String publicationYear,
+                                                    @RequestParam("sortBy") String sortBy,@RequestParam("currentlyOverdue") String currentlyOverdue,
+                                                       @RequestParam("currentlyBorrowed") String currentlyBorrowed,@RequestParam("filteredIsbn") String filteredIsbn) {
+        // view book for manager filter
+        System.out.println(publicationYear);
+        return "redirect:/main_page_manager/view_books_manager";
+    }
+
+    @RequestMapping(value = "/main_page_manager/view_books_manager", params = {"isbn","which_table","username","quantity"})
+    public String main_page_managerPage_view_books_row(ModelMap model,@RequestParam("isbn") String isbn,
+                                                    @RequestParam("which_table") String which_table,@RequestParam("username") String username,
+                                                    @RequestParam("quantity") String quantity) {
+
+        System.out.println(username);
+        return "redirect:/main_page_manager/view_books_manager";
+    }
+    @PostMapping("/main_page_manager/view_books_manager")
+    public String update_book_manager(ModelMap model,@RequestParam("isbn_number_update") String isbn_number_update,
+                                      @RequestParam("updated_quantity") String updated_quantity,@RequestParam("whichTableUpdate") String whichTableUpdate){
+        System.out.println(whichTableUpdate);
+        return "redirect:/main_page_manager/view_books_manager";
+    }
+
+    @RequestMapping(value = "/main_page_manager/view_books_manager", params = {"isbn_number_remove"})
+    public String remove_book_manager(ModelMap model,@RequestParam("isbn_number_remove") String isbn_number_update){
+        System.out.println(isbn_number_update);
+        // remove book from manager
+        return "redirect:/main_page_manager/view_books_manager";
+    }
+
     @GetMapping("/main_page_manager/add_publisher")
     public String add_publisher(ModelMap model)
     {
@@ -249,11 +285,45 @@ public class AppController
         return "add_publisher";
     }
 
+    @GetMapping("/main_page_manager/manage_books")
+    public String manage_books(ModelMap model)
+    {
+
+        return "manage_books";
+    }
+
+    @RequestMapping(value = "/main_page_manager/manage_books", params = {"id","units","penalty","status"})
+    public String manage_books_post(ModelMap model,@RequestParam String id,@RequestParam String units,@RequestParam String penalty,@RequestParam String status)
+    {
+        System.out.println(id);
+        System.out.println(units);
+        System.out.println(status);
+        System.out.println("part 1");
+        // publisher requests from the manager if accepted
+        return "redirect:/main_page_manager/manage_books";
+    }
+
+    @RequestMapping(value = "/main_page_manager/manage_books", params = {"id","status"})
+    public String manage_books_post(ModelMap model,@RequestParam String id,@RequestParam String status)
+    {
+        System.out.println(id);
+        System.out.println(status);
+        System.out.println("part 2");
+        // publisher requests from the manager if accepted
+        return "redirect:/main_page_manager/manage_books";
+    }
+
     @PostMapping("/main_page_manager/add_publisher")
     public String add_publisher_post(ModelMap model,@RequestParam String username, @RequestParam String password,
                                      @RequestParam String email,@RequestParam String phoneNumber,@RequestParam String company_name,@RequestParam String address) {
         // add publisher from the manager
         return "add_publisher";
+    }
+
+    @GetMapping("/main_page_manager/history_manager")
+    public String history_amanger(ModelMap model) {
+        // add publisher from the manager
+        return "history_manager";
     }
 
     @GetMapping("/logout")
