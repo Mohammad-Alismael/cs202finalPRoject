@@ -73,6 +73,7 @@
      <%   }
     %>
 
+
     <div id="signinLink">
         not registered?<a href="/sign_up">sign up</a>
     </div>

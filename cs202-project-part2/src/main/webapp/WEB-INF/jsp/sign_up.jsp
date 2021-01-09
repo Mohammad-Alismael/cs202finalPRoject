@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>sign up</title>
 </head>
 <style>
     h2{
@@ -19,7 +19,7 @@
     }
     #signInForm{
         width: 170px;
-        height: 200px;
+        height: 300px;
         padding: 15px;
         margin: 200px auto;
         background: sandybrown;
@@ -39,19 +39,30 @@
     }
 </style>
 <body>
-<h2>sign_in</h2>
+<h2>sign_up</h2>
 
     <div id="signInForm">
         <form method="post">
             <input type="text" name="username" placeholder="username"/>
-            <input type="password" name="password" placeholder="name"/>
-            <input type="text" name="username" placeholder="surname"/>
+            <input type="text" name="name" placeholder="name"/>
+            <input type="text" name="surname" placeholder="surname"/>
             <input type="password" name="password" placeholder="password"/>
             <input type="email" name="email" placeholder="email" />
             <input type="text" name="phoneNumber" placeholder="phone number">
-            <input type="submit" value="Sign in" />
+            <input type="submit" value="Sign up" />
         </form>
     </div>
+
 <%--    <button onclick="[window.location.href='/change-status']"> change status</button>--%>
+<%
+    String feedback = (String) session.getAttribute("feedback");
+    if (feedback != null ){
+%>
+<script type="text/javascript">
+    window.onload = function () {
+        alert("${feedback}");
+    };
+</script>
+<% } %>
 </body>
 </html>

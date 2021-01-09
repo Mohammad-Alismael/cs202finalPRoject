@@ -1,15 +1,14 @@
 <%--
   Created by IntelliJ IDEA.
   User: apple
-  Date: 1/1/21
-  Time: 1:09 PM
+  Date: 1/6/21
+  Time: 4:11 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <html>
 <head>
-    <title>main page</title>
+    <title>publisher main page</title>
     <style>
         body{
             background-image: url("${pageContext.request.contextPath}/resources/library_Background.jpg");
@@ -67,16 +66,15 @@
     </style>
 </head>
 <body>
-    <div id="outterbackground">
-        <h2>welcome ${username}</h2>
-        <div>
-            <a href="/main_page_user/view_books">view books</a>
-<%--            <a href="/main_page_user/borrow_books">borrow books</a>--%>
-<%--            <a href="/main_page_user/place_hold_request">place hold request</a>--%>
+<div id="outterbackground">
+    <h2>welcome ${username}</h2>
+    <div>
+        <a href="/main_page_publisher/view_books_publisher">view books</a>
 
-            <a href="/main_page_user/history">history</a>
-            <a href="/logout">log out</a>
-        </div>
+        <a href="/main_page_publisher/book_request_publisher">book request</a>
+        <a href="/main_page_publisher/history_publisher">history</a>
+        <a href="/logout">log out</a>
     </div>
+</div>
 </body>
 </html>

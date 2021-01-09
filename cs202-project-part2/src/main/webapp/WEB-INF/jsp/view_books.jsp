@@ -194,9 +194,9 @@
                 <input type="text" name="topics" class="textSearch" disabled/>
                 <input type="checkbox" class="cb">genre
                 <input type="text" name="genre" class="textSearch" disabled/>
-                <input type="checkbox" name="myActiveHoldings" />my active holdings
-                <input type="checkbox" name="currentlyOverdue">currently overdue
-                <input type="checkbox" name="currentlyBorrowed">currently borrowed
+                <input type="checkbox" id="myActiveHoldings" />my active holdings
+                <input type="checkbox" id="currentlyOverdue">currently overdue
+                <input type="checkbox" id="currentlyBorrowed">currently borrowed
 
 <%--            <a href="/main_page_user/view_books?ISBN=54684665">filter</a>--%>
 
@@ -207,10 +207,20 @@
             <input type="text" id="publicationValue"/>
             <select id="publisher">
                 <option selected>select publisher</option>
-                <option>jarir</option>
-                <option>jarir2</option>
-                <option>jarir3</option>
-                <option>jarir4</option>
+                <%
+                    String[][] data2 = (String[][]) session.getAttribute("select_publisher");
+                    if (data2 != null)
+                    {
+                        for (String[] item2 : data2)
+                        {%>
+                        <option>  <%= item2[0] %> </option>
+                        <%}
+                        }
+                %>
+<%--                <option>jarir</option>--%>
+<%--                <option>jarir2</option>--%>
+<%--                <option>jarir3</option>--%>
+<%--                <option>jarir4</option>--%>
             </select>
         </div>
         <button onclick="getFilters()" id="filter">filter</button>
@@ -224,249 +234,34 @@
                 <th>topics</th>
                 <th>genre</th>
                 <th>description</th>
+                <th>publishers</th>
                 <th>borrow units</th>
                 <th>sell units</th>
+                <th>publication date</th>
             </tr>
+
+
+           <%
+               String[][] data = (String[][]) session.getAttribute("books_info");
+               if (data != null)
+               {
+                   for (String[] item : data)
+                   {
+           %>
             <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
+                <% for (int i = 0; i < 10; i++) {
+                %>
+                <td> <%= item[i] %></td>
+                <%
+                    }
+                %>
+
+
             </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>65486435165</td>
-                <td>oop system</td>
-                <td>mohammad alismael</td>
-                <td>education</td>
-                <td>programming</td>
-                <td>book about java classes and object</td>
-                <td>5</td>
-                <td>3</td>
-            </tr>
+            <%
+                    }
+                }
+            %>
         </table>
     </div>
     <div id="selectBook">
@@ -481,10 +276,11 @@
                 <option>purchase</option>
                 <option>hold request</option>
                 <option>preorder book</option>
-                <option>return books</option> // added
+                <option>return books</option>
             </select>
+            <input type="text" name="quantity" placeholder="quantity" style="display:none"/>
             <button onclick="addBook()">submit</button>
-            <p style="float: right">total penalty: 3434.87</p>
+            <p id="totalPenalty" style="display: none">total penalty: 3434.87</p>
         </div>
             <table id="checkSelectedBook">
                 <tr>
@@ -537,12 +333,15 @@
                 publisher.item(publisher.selectedIndex).innerText;
             var selectedSortBy = sortBy.item(sortBy.selectedIndex).innerText == "select publisher" ? "none" :
                 sortBy.item(publisher.selectedIndex).innerText;
-            var myActiveHoldings = document.getElementsByName("myActiveHoldings")[0].checked;
+            var myActiveHoldings = document.getElementById("myActiveHoldings").checked;
+            var currentlyOverdue = document.getElementById("currentlyOverdue").checked;
+            var currentlyBorrowed = document.getElementById("currentlyBorrowed").checked;
             var publicationValue = document.getElementById("publicationValue");
             var publicationValue2 = publicationValue == "" ? "none" : publicationValue.value;
             var str_url = '/main_page_user/view_books?title='+title2+'&author_name='+
                 author_name2+'&topics='+topics2+'&genre='+genre2+'&publisher='+selectedPublisher+
-                '&myActiveHoldings='+myActiveHoldings+'&publicationYear='+publicationValue2+'&sortBy='+selectedSortBy;
+                '&myActiveHoldings='+myActiveHoldings+'&publicationYear='+publicationValue2+'&sortBy='+selectedSortBy+
+                '&currentlyOverdue='+currentlyOverdue+'&currentlyBorrowed='+currentlyBorrowed;
 
             window.location.href = str_url
             console.log(str_url);
@@ -565,94 +364,60 @@
             }
 
         }
+        var quantitySelect = document.getElementsByName("quantity")[0];
         function update(){
-            var str_url = '/main_page_user/view_books?isbn=' + isnb.value + '&which_table=' +
+            var str_url = '/main_page_user/view_books?isbn=' + isnb.value + '&which_table=' +'&quantity='+quantitySelect.value;
                 whichTable.item(whichTable.selectedIndex).innerText;
 
             window.location.href = str_url
         }
         var parentTable = document.getElementById("checkSelectedBook");
-        var flag = false
+        var totalPenalty = document.getElementById("totalPenalty");
+
         function checkBook(){
 
             if (whichTable.item(whichTable.selectedIndex).innerText == "borrow"){
-
-                // parentTable.getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerText = "title";
-                // parentTable.getElementsByTagName("tr")[0].getElementsByTagName("th")[1].innerText = "penalty";
 
                 parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[0].innerText = "${username}";// title
                 parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[1].innerText = "${username}";// penalty
                 parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[2].innerText = "any";
                 parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[3].innerText = "any";
-                    // parentTable.getElementsByTagName("tr")[0].getElementsByTagName("th")[2].remove();
-                    // parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[2].remove();
 
+                totalPenalty.style.display = "none";
+                quantitySelect.style.display = "none";
 
-                // data from backend
-                <%--var tableRowData = document.createElement("tr");--%>
-                <%--var td = document.createElement("td");--%>
-                <%--td.appendChild(document.createTextNode(--%>
-                <%--    // this part should be from backend--%>
-                <%--    ${username}--%>
-                <%--))--%>
-                <%--tableRowData.appendChild(td);--%>
-                <%--var td2 = document.createElement("td");--%>
-                <%--td2.appendChild(document.createTextNode(--%>
-                <%--    // this part should be from backend--%>
-                <%--    ${password}--%>
-                <%--))--%>
-                <%--tableRowData.appendChild(td2);--%>
-                <%--parentTable.appendChild(tableRowData);--%>
             }else if (whichTable.item(whichTable.selectedIndex).innerText == "purchase"){
-                // parentTable.getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerText = "title";
-                // parentTable.getElementsByTagName("tr")[0].getElementsByTagName("th")[1].innerText = "price";
-                // var extraTr = document.createElement("th")
-                // extraTr.appendChild(document.createTextNode("units"))
-                // parentTable.getElementsByTagName("tr")[0].appendChild(extraTr);
-                //
-                // var td = document.createElement("td");
+
                 parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[0].innerText = "${username}";// title
                 parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[1].innerText = "any";// penalty
                 parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[2].innerText = "${username}";// price
                 parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[3].innerText = "${username}";//units
-                <%--td.appendChild(document.createTextNode(--%>
-                <%--    // this part should be from backend--%>
-                <%--    "${2}"--%>
-                <%--))--%>
 
-                <%--parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[0].innerText = "${username}";--%>
-                <%--parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[1].innerText = "${username}";--%>
-                <%--parentTable.getElementsByTagName("tr")[1].appendChild(td);--%>
+
+
+                totalPenalty.style.display = "none";
+                quantitySelect.style.display = "block";
 
             }else if (whichTable.item(whichTable.selectedIndex).innerText == "hold request"){
-                // parentTable.getElementsByTagName("tr")[0].getElementsByTagName("th")[0].innerText = "title";
-                //
-                // parentTable.getElementsByTagName("tr")[0].getElementsByTagName("th")[1].remove();
-                // parentTable.getElementsByTagName("tr")[0].getElementsByTagName("th")[2].remove();
-
-                <%--parentTable.getElementsByTagName("tr")[0].getElementsByTagName("th")[1].innerText = "price";--%>
-                <%--var extraTr = document.createElement("th")--%>
-                <%--extraTr.appendChild(document.createTextNode("units"))--%>
-                <%--parentTable.getElementsByTagName("tr")[0].appendChild(extraTr);--%>
-
-                <%--var td = document.createElement("td");--%>
-                <%--td.appendChild(document.createTextNode(--%>
-                <%--    // this part should be from backend--%>
-                <%--    "${2}"--%>
-                <%--))--%>
 
                 parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[0].innerText = "${username}";// title
-                parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[1].innerText = "any";// penalty
-                parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[2].innerText = "any";// price
-                parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[3].innerText = "any";//units
-
+                parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[1].innerText = "none";// penalty
+                parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[2].innerText = "none";// price
+                parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[3].innerText = "none";//units
+                totalPenalty.style.display = "none";
+                quantitySelect.style.display = "none";
             }else if (whichTable.item(whichTable.selectedIndex).innerText == "preorder book"){
                 parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[0].innerText = "${username}";// title
-                parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[1].innerText = "any";// penalty
-                parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[2].innerText = "any";// price
-                parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[3].innerText = "any";//units
+                parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[1].innerText = "none";// penalty
+                parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[2].innerText = "none";// price
+                parentTable.getElementsByTagName("tr")[1].getElementsByTagName("td")[3].innerText = "none";//units
+                totalPenalty.style.display = "none";
+                quantitySelect.style.display = "none";
             }else if (whichTable.item(whichTable.selectedIndex).innerText == "return books"){
 
+                totalPenalty.style.display = "block";
+                totalPenalty.innerText =  "total penalty : ${username}"
+                quantitySelect.style.display = "none";
             }
         }
         function check(){
